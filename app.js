@@ -74,3 +74,15 @@ app.put('/ApiRes/productos/:id', (req,res)=>{
       }
   });
 });
+
+app.delete('/ApiRes/productos/:id', (req,res)=>{
+  const id = req.params.id;
+  const sql = `DELETE FROM productos WHERE id= ${id}`; 
+  conexion.query(sql, (error,results) => {
+      if(error){
+          throw error;
+      }else{
+         res.send({ message: 'Producto eliminado correctamente'});
+      }
+  });
+});
