@@ -49,3 +49,15 @@ app.get('/ApiRes/productos/:id', (req,res)=>{
       }
   });
 });
+
+app.post('/ApiRes/productos',(req,res)=>{
+  let data = {descripcion:req.body.descripcion, precio:req.body.precio, stock:req.body.stock};
+  let sql = 'INSERT INTO productos SET ?';
+  conexion.query(sql, data, function(error,results){
+      if(error){
+          throw error;
+      }else{
+         res.send(results);     
+      }
+  });
+});
