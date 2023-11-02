@@ -61,3 +61,16 @@ app.post('/ApiRes/productos',(req,res)=>{
       }
   });
 });
+
+app.put('/ApiRes/productos/:id', (req,res)=>{
+  const id = req.params.id;
+  const data = {descripcion:req.body.descripcion, precio:req.body.precio, stock:req.body.stock};
+  const sql = `UPDATE productos SET ? WHERE id= ${id}`; 
+  conexion.query(sql, data,(error,results) => {
+      if(error){
+          throw error;
+      }else{
+         res.send({ message: 'Producto actualizado correctamente'});
+      }
+  });
+});
