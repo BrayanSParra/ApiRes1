@@ -38,3 +38,14 @@ app.get('/ApiRes/productos', (req,res)=>{
       }
   });
 });
+
+app.get('/ApiRes/productos/:id', (req,res)=>{
+  conexion.query('SELECT * FROM productos WHERE id=?', [req.params.id] , (error,fila)=>{
+      if(error){
+          throw error;
+      }else{
+          res.json(fila);
+         res.send(fila);  // para traer un solo resgistro “ descripción”
+      }
+  });
+});
