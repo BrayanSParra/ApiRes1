@@ -10,3 +10,12 @@ app.listen('3000', function(){
 app.get('/', function(req,res){
   res.send('ruta Inicio');
 })
+
+//crear 
+//objeto de la conexion--  se establecen los parámetros
+let conexion = mysql.createConnection({
+  host:'localhost',
+  user:'root',
+  password:'',
+  database:'articulos'
+});
