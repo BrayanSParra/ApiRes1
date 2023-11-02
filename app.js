@@ -28,3 +28,13 @@ conexion.connect(function(error){
       console.log('Conexión exitosa');
   }    
 });
+
+app.get('/ApiRes/productos', (req,res)=>{
+  conexion.query('SELECT * FROM productos', (error,filas)=>{
+      if(error){
+          throw error;
+      }else{
+          res.send(filas);
+      }
+  });
+});
