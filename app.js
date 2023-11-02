@@ -19,3 +19,12 @@ let conexion = mysql.createConnection({
   password:'',
   database:'articulos'
 });
+
+// Probar la conexión
+conexion.connect(function(error){
+  if(error){
+      throw error;
+  } else{
+      console.log('Conexión exitosa');
+  }    
+});
